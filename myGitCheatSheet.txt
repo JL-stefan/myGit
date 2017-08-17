@@ -1,0 +1,53 @@
+// window10 系统(注意不要使用系统自带记事本)
+// status信息: changes not staged for commit(文件被修改,需要再次add 和 commit)
+				changes to be committed (文件被修改,已经add,需要commit)
+				untrached files(文件从来没被添加过)
+1 安装git
+2 找到Git Bash 并打开一个类似命令窗口东西(本人电脑在桌面右键就可以看到)
+3 在命令行输入:
+	$ git config --global user.name "your name"
+	$ git config --global user.name "email@example.com"
+4 创建版本库(目录)
+	$ mkdir learngit	// 在当前位置创建目录learngit
+	$ cd learngit		// 进入到learngit目录
+	$ pwd				// 显示当前目录
+	$ git init			// 把目录编程Git可以管理的仓库
+5 把文件添加到版本库
+6 $ git add <file> 		// 文件从工作区进去暂存区
+7 $ git commit -m "描述信息"	// 把暂存区的文件全部提交
+//如果是输出状态，首先Esc退出输入状态，然后Shift+;，再输入q!或wq!（不保存改动，wq!是保存文件的写入修改）退出
+8 如果有改动文件 ,需要重新add 和 commit,如果想要查看改动的信息,用命令: $ git diff <file>
+9 版本回退
+	$ git log (--pretty=oneline) // 命令显示从最近到最远提交的日志,括号加上去输去的是简略信息
+	$ git reset --hard HEAD^(^)	// 回退到上(上)一个版本,HEAD~100会退到前100个版本
+	$ git reset --hard <commit id> // 回退到commit id 的版本,只要输入前面几位就行
+	$ git reflog	// 记录每一条命令信息,可以查看commit id
+10 管理修改
+	$ git diff HEAD -- <file>	// 可以查看工作区和版本库里面最新版本的区别
+11 撤销修改
+	$ git checkout -- <file>	// 文件在工作区的修改全部撤销
+	
+	$ git reset HEAD <file>		// 可以把暂存区的修改撤销掉(unstage),重新放回工作区
+	
+12 删除文件
+	$ rm <file>		// 删除文件
+	$ git rm <file>		// 从版本库中删除文件
+	$ git commit -m "描述信息" // 删除文件后记得提交
+	$ git checkout -- <file>	// 把误删文件恢复到最新版本
+13 添加远程库
+	要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
+
+	关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
+
+	此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+14 克隆远程仓库
+	$ git clone git@github.com:JL-stefan/gitskills.git
+	
+15 创建与合并分支
+	$ git checkout -b <name>	// 创建并切换分支($ git branch <name> && $ git checkout <name>)
+	$ git branch	// 查看当前分支
+	$ git checkout <name>	// 切换分支
+	分支修改的内容在其他分支没有变化,需要合并分支才能看到变化
+	$ git merge <name>		// 把name分支的文件合并到当前分支上
+	$ git branch -d <name>	// 合并完成后删除分支name
+	
