@@ -34,14 +34,16 @@
 	$ git rm <file>		// 从版本库中删除文件
 	$ git commit -m "描述信息" // 删除文件后记得提交
 	$ git checkout -- <file>	// 把误删文件恢复到最新版本
-13 添加远程库
+13 添加远程库(需要在github上先创建new repository)
 	要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；
 
 	关联后，使用命令git push -u origin master第一次推送master分支的所有内容；
 
 	此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；
+	$ git remote remove origin		// 取消本地目录下关联的远程库
 14 克隆远程仓库
-	$ git clone git@github.com:JL-stefan/gitskills.git
+	$ git clone git@github.com:JL-stefan/gitskills.git	// 从远程库克隆
+	$ git clone -b C git@github.com:JL-stefan/gitskills.git			// 从远程仓库克隆“指定分支C”上的代码
 	
 15 创建与合并分支
 	$ git checkout -b <name>	// 创建并切换分支($ git branch <name> && $ git checkout <name>)
@@ -51,3 +53,15 @@
 	$ git merge <name>		// 把name分支的文件合并到当前分支上
 	$ git branch -d <name>	// 合并完成后删除分支name
 16 解决冲突	
+17 分支管理策略
+18 创建标签
+	$ git tag <name>	// 创建标签
+	$ git tag 			// 查看标签
+	$ git tag -d <name> // 删除标签
+	$ git push origin :refs/tags/<name>		// 从远程删除标签
+19 使用github
+	如何参与一个开源项目呢？比如人气极高的bootstrap项目，这是一个非常强大的CSS框架，你可以访问它的项目主页https://github.com/twbs/bootstrap，点“Fork”就在自己的账号下克隆了一个bootstrap仓库，然后，从自己的账号下clone：
+
+	git clone git@github.com:JL-stefan/bootstrap.git
+
+	一定要从自己的账号下clone仓库，这样你才能推送修改。如果从bootstrap的作者的仓库地址git@github.com:twbs/bootstrap.git克隆，因为没有权限，你将不能推送修改。
